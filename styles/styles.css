@@ -1,0 +1,47 @@
+html{
+    background-color: rgb(7, 7, 7);
+    color: white;
+}
+
+body{
+    text-align: center;
+    font-family: "OptimusPrinceps";
+}
+
+h1{
+    padding-top: 1%;
+}
+
+img{
+    width: 800;
+    border-radius: 12px;
+}
+
+hr{
+    border-color: #a3a3a2
+}
+
+button{
+    color: white;
+    background-color: rgb(0, 0, 0);
+    width: 10%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    font-family: "OptimusPrincepsSemiBold";
+    border-color: #a3a3a2;
+    
+}
+
+.icon{
+    width: 34;
+    border-radius: auto;
+    padding-top: auto;
+}
+
+.inv{
+    text-align: center;
+}
+
+td{
+    text-align: center;
+}

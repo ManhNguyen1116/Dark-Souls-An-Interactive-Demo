@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="icon" href="assets/darksouls-logo.png">
+        <link href="http://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Spiral Tower</h1>
+        <a id="door" href="#">
+            <img id="doorImage" onclick="openDoor()" src="assets/lockedSpiralTower.png">
+        </a>
+        <p id="textbox"></p>
+        <a id="Battlefield" href="battlefield.html"> <button>go back to battlefield</button></a>
+        <a id="Top" href="topOfTower.html"> <button>take the staircase to your left</button></a>
+        <hr>
+        <iframe src="inventory.html" id="inventory" height="130" width="200"></iframe>
+        <script>
+            inventory.src += location.search;
+            Battlefield.href += location.search;
+            Top.href += location.search;
+            door.href += location.search;
+
+            var queryString = new URLSearchParams(location.search);
+            var key = +queryString.get("keys");
+
+            function openDoor(){
+                if(doorImage.src.includes("openSpiral")){
+                    door.href = "havel.html?"+queryString;
+                }
+                else if(key >= 3){
+                    doorImage.src="assets/openSpiralTower.png"
+                    textbox.innerHTML= "The door unlocked, but the keys broke apart."
+                    queryString.set("keys",key-3);
+                    inventory.src="inventory.html?"+queryString;
+                    Battlefield.href="battlefield.html?"+queryString;
+                    Top.href="top.html?"+queryString;
+                }
+                else{
+                    textbox.innerHTML="The door is locked. You need three keys to open it.";
+                }
+            }
+        </script>
+    </body>
+</html>

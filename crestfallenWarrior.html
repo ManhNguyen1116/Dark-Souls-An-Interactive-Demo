@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="icon" href="assets/darksouls-logo.png">
+        <link href="http://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Crestfallen Warrior</h1>
+        <hr>
+        <br>
+        <img src="assets/CrestfallenWarrior.png">
+        <br>
+        <p> Oh, your face! You're practically Hollow. But who knows, going Hollow could solve quite a bit! </p>
+        <a id="FirelinkShrine" href="firelinkShrine.html">
+            <button> go back </button>
+        </a>
+        <br>
+        <br>
+        <hr>
+        <p>
+            <iframe src="inventory.html" id="inventory" height="130" width="200"></iframe>
+        </p>
+        <script>
+            inventory.src += location.search;
+            FirelinkShrine.href += location.search;
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="icon" href="assets/darksouls-logo.png">
+        <link href="http://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Quickstart Guide</h1>
+        <hr>
+        This is a small interactive version of a Dark Souls demo. Dark Souls is a genre-defining action role-playing game. This interactive demo emulates the first portion of the game.
+        
+        <p><img class="icon" src="assets/hp.png"> This icon represents your hit points.</p>
+        <p><img class="icon" src="assets/attackRating.png"> This icon represents your attack rating, or how much damage you will deal per attack</p>
+        <p><img class="icon" src="assets/estus.png"> This icon represents your estus flasks. These are your healing potions and will heal you for x hit points.</p>
+        <p>&#128273 This icon represents your keys.</p>
+        <p><img class="icon" src="assets/souls.png"> This icon represents your souls. Souls are obtained from defeating enemies and act as your currency.</p>
+        <p></p>
+        <br>
+        <br>
+        <a href="firelinkShrine.html?gp=5&hp=3&ap=1&keys=0">
+            <button> Go </button>
+        </a>
+    </body>
+</html>

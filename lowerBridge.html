@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="icon" href="assets/darksouls-logo.png">
+        <link href="http://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Lower Bridge</h1>
+        <hr>
+        <br>
+        <img id="hollow" src="assets/BlackKnight.png">
+        <p id="battleText"> There's a Black Knight with a key on his hip. </p>
+        <h4> FIGHT OR FLEE </h4>
+        <div id="options">
+            <button id="fight" onClick="attack()"> fight </button>
+            <a id="Battlefield" href="battlefield.html">
+                <button> go back </button>
+            </a>
+            <button onclick='heal()'>Heal</button>
+        </div>
+        <br>
+        <br>
+        <hr>
+        <iframe src="inventory.html" id="inventory" height="130" width="200"></iframe>
+        <script>
+            inventory.src += location.search;
+            Battlefield.href += location.search;
+            
+            var queryString = new URLSearchParams(location.search);
+            var souls = +queryString.get("souls");
+            var estus = +queryString.get("estus");
+            var hp = +queryString.get("hp");
+            var ar = +queryString.get("ar");
+            var keys = +queryString.get("keys");
+            var hollowHP = 30, hollowAR = 11;
+            
+            function heal(){
+                if(estus > 0 ){
+                    queryString.set('estus', estus-1);
+                    queryString.set('hp', hp+3);
+                    location.search = queryString;
+                }
+            }
+
+            function attack(){
+                hollowHP -= ar;
+
+                if(hollowHP <= 0){
+                    hollow.src = "assets/enemyDefeated.gif";
+                    queryString.set("souls",souls+100);
+                    queryString.set("keys",keys+1);
+                    queryString.set("hp",hp);
+                    inventory.src = "inventory.html?"+queryString;
+                    battleText.innerHTML = `You defeated the enemy and gained 100 souls`
+                    options.innerHTML = `<a href="battlefield.html?${queryString}"><button>go back</button></a>`
+                }
+                else{
+                    hp -= hollowAR
+                    queryString.set("hp",hp);
+                    inventory.src = "inventory.html?"+queryString;
+                    battleText.innerHTML = `You hit for ${ar} damage, it has ${hollowHP}hp left.<br> You take ${hollowAR} damage.`
+                }
+                if(hp <= 0){
+                    die();
+                }
+            }
+
+            function die(){
+            document.body.innerHTML = (
+                `<img src="assets/YouDied.gif">
+                <a href="index.html"> <h4><button> Game Over </button></h4> </a>
+                <audio autoplay>
+                    <source src="assets/youdiedsound.mp3">
+                </audio>`
+                );
+            }
+        </script>
+    </body>
+</html>

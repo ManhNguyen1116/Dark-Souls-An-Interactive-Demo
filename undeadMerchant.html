@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="icon" href="assets/darksouls-logo.png">
+        <link href="http://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Undead Merchant</h1>
+        <img src="assets/UndeadMerchant.png">
+        <h4>Well, now... You seem to have your wits about you, hmm? Then you are a welcome customer! I trade for souls. Everything's for sale! Nee hee hee hee hee!</h4>
+        <div>
+            <button onclick='weapon()'> Uchigatana &#128481; <br> <i> 100 souls </i> </button>
+            <button onclick='key()'> Key &#128273; <br> <i> 150 souls </i> </button>
+        </div>
+        <br>
+        <a id="UndeadBurg" href="undeadBurg.html"> <button>go back</button> </a>
+        <hr>
+        <iframe src="inventory.html" id="inventory" height="130" width="200"></iframe>
+        <script>
+            inventory.src += location.search;
+            UndeadBurg.href += location.search;
+
+            var queryString = new URLSearchParams(location.search);
+            var souls = +queryString.get("souls");
+            var estus = +queryString.get("estus");
+            var hp = +queryString.get("hp");
+            var ar = +queryString.get("ar");
+            var keys = +queryString.get("keys");
+            function weapon(){
+                if (souls >= 100 ){
+                    queryString.set('souls', souls-100);
+                    queryString.set('ar', ar+7);
+                    location.search = queryString;
+                }
+            }
+            function key(){
+                if (souls >= 150 ){
+                    queryString.set('souls', souls-150);
+                    queryString.set('keys',keys+1);
+                    location.search = queryString;
+                }
+            }
+        </script>
+    </body>
+</html>

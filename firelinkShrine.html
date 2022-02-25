@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="icon" href="assets/darksouls-logo.png">
+        <link href="http://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Firelink Shrine</h1>
+        <hr>
+        <br>
+        <img src="assets/FirelinkShrine.png">
+        <br>
+        <p> You arrive at a warm yet incredibly lonely place. Taking your first steps, you realize that this will be your last journey. </p>
+        <p> As you look around, you notice a man with dejected features, a path to the ruined shrine, and stairs going up the hill. </p>
+        <a id="CrestfallenWarrior" href="crestfallenWarrior.html">
+            <button> talk to the Cresfallen Warrior </button>
+        </a>
+        <a id="ruins" href="ruins.html">
+            <button> take the path to the ruins </button>
+        </a>
+        <a id="hill" href="stairsOnHill.html">
+            <button> go up the hill </button>
+        </a>
+        <button onclick='heal()'>Heal</button>
+        <br>
+        <br>
+        <hr>
+        <p>
+            <iframe src="inventory.html" id="inventory" height="130" width="200"></iframe>
+        </p>
+        <script>
+            inventory.src += location.search;
+            CrestfallenWarrior.href += location.search;
+            ruins.href += location.search;
+            hill.href += location.search;
+
+            var queryString = new URLSearchParams(location.search);
+            var hp = +queryString.get("hp");
+            var estus = +queryString.get("estus");
+            function heal(){
+                if(estus > 0 ){
+                    queryString.set('estus', estus-1);
+                    queryString.set('hp', hp+3);
+                    location.search = queryString;
+                }
+            }
+        </script>
+
+    </body>
+</html>

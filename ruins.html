@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="icon" href="assets/darksouls-logo.png">
+        <link href="http://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Ruins</h1>
+        <hr>
+        <br>
+        <img src="assets/Ruins.png">
+        <br>
+        <p> The once pure and revered shrine is merely a shadow of its former self. It is now flooded, and the structure has collapsed. </p>
+        <p> From what you can see, every path goes past the graveyard towards the catacombs, and the only other path leads back towards the area you just were. </p>
+        <a id="FirelinkShrine" href="firelinkShrine.html">
+            <button> go back </button>
+        </a>
+        <button onclick='die()'>go towards the catacombs</button>
+        <button onclick='heal()'>Heal</button>
+        <br>
+        <br>
+        <hr>
+        <p>
+            <iframe src="inventory.html" id="inventory" height="130" width="200"></iframe>
+        </p>
+        <script>
+            inventory.src += location.search;
+            FirelinkShrine.href += location.search;
+            Catacombs.href += location.search;
+
+            var queryString = new URLSearchParams(location.search);
+            var hp = +queryString.get("hp");
+            var estus = +queryString.get("estus");
+
+            function heal(){
+                if(estus > 0 ){
+                    queryString.set('estus', estus-1);
+                    queryString.set('hp', hp+3);
+                    location.search = queryString;
+                }
+            }
+
+            function die(){
+            document.body.innerHTML = (
+                `<img src="assets/YouDied.gif">
+                <p> You got jumped and torn apart by a bunch of skeletons. </p>
+                <p> Going through a graveyard in this economy is just not a good idea. </p>
+                <a href="index.html"> <h4><button> Game Over </button></h4> </a>
+                <audio autoplay>
+                    <source src="assets/youdiedsound.mp3">
+                </audio>`
+                );
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link href="http://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet">
+    </head>
+
+    <body class="inv">
+        Inventory: 
+        <hr>
+        <table>
+            <tr>
+                <th> <img class="icon" src="assets/hp.png"> </th>
+                <th> <img class="icon" src="assets/attackRating.png"> </th>
+                <th> <img class="icon" src="assets/estus.png"> </th>
+                <th> &#128273; </th> <!-- emoji: 🔑 -->
+                <th> <img class="icon" src="assets/souls.png"> </th>
+            </tr>
+            <tr>
+                <td id="hp">0</td>
+                <td id="ar">0</td>
+                <td id="estus">0</td>
+                <td id="keys">0</td>
+                <td id="souls">0</td>
+            </tr>
+        </table>
+        <script>
+            var queryString = new URLSearchParams(location.search);
+            hp.innerText = queryString.get("hp");
+            ar.innerText = queryString.get("ar");
+            estus.innerText = queryString.get("estus");
+            keys.innerText = queryString.get("keys");
+            souls.innerText = queryString.get("souls");
+        </script>
+    </body>
+
+</html>

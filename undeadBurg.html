@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="icon" href="assets/darksouls-logo.png">
+        <link href="http://fonts.cdnfonts.com/css/optimus-princeps" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Undead Burg</h1>
+        <hr>
+        <br>
+        <img src="assets/UndeadBurg.png">
+        <br>
+        <p> This town is overrun with hostile undead. They prowl every corner of this place. </p>
+        <p> To the left at the top of the stairs is a bonfire while the path towards the next area is to the right of the stairs. There is an undead selling useful merchandise to your immediate right. </p>
+        <a id="hill" href="stairsOnHill.html">
+            <button> go back down to the hill </button>
+        </a>
+        <a id="Battlefield" href="battlefield.html">
+            <button> proceed to the battlefield </button>
+        </a>
+        <a id="UndeadMerchant" href="undeadMerchant.html">
+            <button> interact with the Undead Merchant </button>
+        </a>
+        <button onclick='heal()'>Heal</button>
+        <button onclick='restoreEstus()'>Bonfire (Restores Estus Flasks)</button>
+        <br>
+        <br>
+        <hr>
+        <p>
+            <iframe src="inventory.html" id="inventory" height="130" width="200"></iframe>
+        </p>
+        <script>
+            inventory.src += location.search;
+            hill.href += location.search;
+            Battlefield.href += location.search;
+            UndeadMerchant.href += location.search;
+
+            var queryString = new URLSearchParams(location.search);
+            var hp = +queryString.get("hp");
+            var estus = +queryString.get("estus");
+
+            function heal(){
+                if(estus > 0 ){
+                    queryString.set('estus', estus-1);
+                    queryString.set('hp', hp+3);
+                    location.search = queryString;
+                }
+            }
+            
+            function restoreEstus(){
+                queryString.set('estus',5);
+                location.search = queryString;
+            }
+        </script>
+
+    </body>
+</html>
